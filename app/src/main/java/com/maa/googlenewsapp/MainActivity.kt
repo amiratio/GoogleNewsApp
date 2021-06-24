@@ -37,7 +37,8 @@ class MainActivity : AppCompatActivity() {
     fun getNews(adapter: MyAdapter){
 
         val apiService= RetroClass().apiService()
-        val call= apiService.getData("v2/top-headlines?country=tr&apiKey=fc4044a38b02414ea8aa2b4c82692cb0")
+        val apiKey="your---api---key"
+        val call= apiService.getData("v2/top-headlines?country=tr&apiKey="+apiKey)
         call.enqueue(object : retrofit2.Callback<Articles>{
             override fun onResponse(call: Call<Articles?>, response: Response<Articles?>) {
                 for(i in 0 until response.body()!!.articles.size){
